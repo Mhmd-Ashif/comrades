@@ -11,7 +11,7 @@ function Response() {
           for more updates!
         </p>
         <img
-          src="/public/thanksGIF.gif"
+          src="/thanksGIF.gif"
           width="300"
           height="295"
           alt="Thank You Animation"

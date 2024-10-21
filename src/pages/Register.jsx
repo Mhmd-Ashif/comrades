@@ -153,7 +153,7 @@ function Register() {
 
         {/* Image Section */}
         <div className="image-section">
-          <img src="/public/logoimage.png" alt="Poster" />
+          <img src="/logoimage.png" alt="Poster" />
         </div>
       </div>
     </div>
