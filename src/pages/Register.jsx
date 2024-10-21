@@ -35,7 +35,7 @@ function Register() {
 
     if (formData.interest === "yes") {
       try {
-        await axios.post("http://localhost:3000/api/students/register", {
+        await axios.post("https://nex-be.onrender.com/api/students/register", {
           name: name.toLowerCase(),
           dno,
           department: department.toLowerCase(),
@@ -153,7 +153,7 @@ function Register() {
 
         {/* Image Section */}
         <div className="image-section">
-          <img src="../public/logoimage.png" alt="Poster" />
+          <img src="/public/logoimage.png" alt="Poster" />
         </div>
       </div>
     </div>
