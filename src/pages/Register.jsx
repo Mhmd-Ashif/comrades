@@ -37,12 +37,15 @@ function Register() {
     if (formData.interest === "yes") {
       setLoading(true);
       try {
-        await axios.post("https://nex-be.onrender.com/api/students/register", {
-          name: name.toLowerCase(),
-          dno,
-          department: department.toLowerCase(),
-          year,
-        });
+        await axios.post(
+          "https://neural-nexus-backend.onrender.com/api/students/register",
+          {
+            name: name.toLowerCase(),
+            dno,
+            department: department.toLowerCase(),
+            year,
+          }
+        );
         setLoading(false);
         alert("Registration successful!");
         navigate("/success");
@@ -80,12 +83,14 @@ function Register() {
             <label>
               D.No:
               <input
-                type="number"
+                type="text"
                 name="dno"
                 value={formData.dno}
                 onChange={handleInputChange}
                 placeholder="Enter your D.No"
                 required
+                minLength={4}
+                maxLength={4}
               />
             </label>
 
