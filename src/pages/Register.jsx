@@ -6,6 +6,7 @@ import axios from "axios";
 function Register() {
   // Initialize state for form inputs
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     dno: "",
@@ -34,6 +35,7 @@ function Register() {
     }
 
     if (formData.interest === "yes") {
+      setLoading(true);
       try {
         await axios.post("https://nex-be.onrender.com/api/students/register", {
           name: name.toLowerCase(),
@@ -41,9 +43,11 @@ function Register() {
           department: department.toLowerCase(),
           year,
         });
+        setLoading(false);
         alert("Registration successful!");
         navigate("/success");
       } catch (error) {
+        setLoading(false);
         console.error("Registration error:", error);
         alert("An error occurred: " + error.message);
       }
@@ -87,14 +91,25 @@ function Register() {
 
             <label>
               Department:
-              <input
-                type="text"
+              <select
                 name="department"
                 value={formData.department}
                 onChange={handleInputChange}
-                placeholder="Enter your department"
                 required
-              />
+              >
+                <option value="">Select Department</option>
+                <option value="cse">Computer Science and Engineering</option>
+                <option value="it">Information Technology</option>
+                <option value="mech">Mechanical Engineering</option>
+                <option value="aero">Aeronautical Engineering</option>
+                <option value="ece">
+                  Electrical and Communication Engineering
+                </option>
+                <option value="eee">
+                  Electrical and Electronics Engineering
+                </option>
+                <option value="civil">Civil Engineering</option>
+              </select>
             </label>
 
             <label>
@@ -145,8 +160,8 @@ function Register() {
               </div>
             </div>
 
-            <button type="submit" className="submit-button">
-              Register
+            <button type="submit" className="submit-button" disabled={loading}>
+              {loading ? <span className="loader"></span> : "Register"}
             </button>
           </form>
         </div>
